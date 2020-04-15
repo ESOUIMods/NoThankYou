@@ -1258,7 +1258,7 @@ local function HandleLuaErrorEvent()
 			-- Display a notification
 			if SV.luaError == 1 then
 
-				local LNTF = LibStub("LibNotifications")
+				local LNTF = LibNotifications
 				local provider = LNTF:CreateProvider()
 
 				local function RemoveNotification(data)
