@@ -25,7 +25,7 @@ http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
 ]]
 
 local ADDON_NAME = "NoThankYou"
-local ADDON_VERSION = "10.4b"
+local ADDON_VERSION = "10.5"
 local ADDON_AUTHOR = "|cEFEBBEGarkin|r, Ayantir, Vostorn, |c8794C5SlippyCheeze|r, Uta"
 local ADDON_WEBSITE = "http://www.esoui.com/downloads/info865-Nothankyou.html"
 
@@ -1181,6 +1181,7 @@ local function RemovePinsFromMaps()
 		[382] = true, -- Northern Elsweyr   Rimmen
 		[402] = true, -- Southern Elsweyr   Senchal
 		[407] = true, -- Southern Elsweyr   Dragonguard Sanctum
+		[421] = true, -- Western Skyrim     Solitude
 	}
 	local isArena = {
 		[250] = true, -- Maelstrom Arena
