@@ -25,7 +25,7 @@ http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
 ]]
 
 local ADDON_NAME = "NoThankYou"
-local ADDON_VERSION = "10.5"
+local ADDON_VERSION = "10.6"
 local ADDON_AUTHOR = "|cEFEBBEGarkin|r, Ayantir, Vostorn, |c8794C5SlippyCheeze|r, Uta"
 local ADDON_WEBSITE = "http://www.esoui.com/downloads/info865-Nothankyou.html"
 
@@ -1170,6 +1170,8 @@ local function RemovePinsFromMaps()
 		[48]  = true, -- Shadowfen          Stormhold
 		[87]  = true, -- Eastmarch          Windhelm
 		[109] = true, -- The Rift           Riften
+		[215] = true, -- Mages Guild        Eyevea
+		[221] = true, -- Fighters Guild     The Earth Forge
 		[220] = true, -- Craglorn           Belkarth
 		[244] = true, -- Wrothgar           Orsinium
 		[255] = true, -- Hew's Bane         Abah's Landing
