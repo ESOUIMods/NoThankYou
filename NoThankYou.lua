@@ -25,7 +25,7 @@ http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
 ]]
 
 local ADDON_NAME = "NoThankYou"
-local ADDON_VERSION = "10.6"
+local ADDON_VERSION = "10.6a"
 local ADDON_AUTHOR = "|cEFEBBEGarkin|r, Ayantir, Vostorn, |c8794C5SlippyCheeze|r, Uta"
 local ADDON_WEBSITE = "http://www.esoui.com/downloads/info865-Nothankyou.html"
 
@@ -479,6 +479,7 @@ local function HookRaidNotifications()
 			for index = 1, GetNumRaidScoreNotifications() do
 				local notificationId = GetRaidScoreNotificationId(index)
 				local numRaidMembers = GetNumRaidScoreNotificationMembers(notificationId)
+				local numKnownMembers = 0
 				local hasGuildMember = false
 				local hasFriend = false
 				local contacts = {}
@@ -487,6 +488,7 @@ local function HookRaidNotifications()
 					local displayName, _, isFriend, isGuildMember = GetRaidScoreNotificationMemberInfo(notificationId, raidMemberIndex)
 					if isFriend or isGuildMember then
 						table.insert(contacts, displayName)
+						numKnownMembers = numKnownMembers + 1
 					end
 					hasFriend = hasFriend or isFriend
 					hasGuildMember = hasGuildMember or isGuildMember
@@ -495,7 +497,7 @@ local function HookRaidNotifications()
 				if hasFriend or hasGuildMember then
 					local raidId, raidScore = GetRaidScoreNotificationInfo(notificationId)
 					local raidName = GetRaidName(raidId)
-					local message = self:CreateMessage(raidName, raidScore, hasFriend, hasGuildMember)
+					local message = self:CreateMessage(raidName, raidScore, numKnownMembers, hasFriend, hasGuildMember)
 					BuildMessageAndRemoveNotification(contacts, message, notificationId)
 				end
 
@@ -834,7 +836,8 @@ local function DontShowSkillProgression()
 end
 
 local scenes = {}
-local function DontRotateGameCamera()
+local function DontRotateGameCamera(doOverrideNoCameraSpin)
+	doOverrideNoCameraSpin = doOverrideNoCameraSpin or false
 
 	local emotesFragments = {
 		FRAME_PLAYER_FRAGMENT,
@@ -858,6 +861,7 @@ local function DontRotateGameCamera()
 		dyeStampConfirmationGamepad = true,
 		dyeStampConfirmationKeyboard = true,
 		outfitStylesBook = true,
+		stats = true,
 	}
 
 	local function ChangeScenesBehavior(disableFragments)
@@ -889,7 +893,8 @@ local function DontRotateGameCamera()
 		end
 	end
 
-	ChangeScenesBehavior(SV.noCameraSpin)
+	local doDisableFragments = doOverrideNoCameraSpin or SV.noCameraSpin
+	ChangeScenesBehavior(doDisableFragments)
 
 end
 
@@ -2106,7 +2111,6 @@ local function OnAddonLoaded(event, name)
 
 		--rebuild notifications list
 		NOTIFICATIONS:RefreshNotificationList()
-
 	end
 end
 

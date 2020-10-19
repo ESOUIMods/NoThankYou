@@ -5,13 +5,13 @@
 ; You can read the full terms at https://account.elderscrollsonline.com/add-on-terms
 
 ## Title: |cEFEBBENo, thank you!|r
-## Version: 10.6
-## AddOnVersion: 1060
-## APIVersion: 100031 100032
+## Version: 10.6a
+## AddOnVersion: 1061
+## APIVersion: 100032
 ## Author: |cEFEBBEGarkin|r, Ayantir, Vostorn, |c8794C5SlippyCheeze|r, Uta
 ## Description: Handles unwanted messages, alerts, dialogs and notifications.
 ## SavedVariables: NO_THANK_YOU_VARS
-## DependsOn: LibAddonMenu-2.0 LibNotification
+## DependsOn: LibAddonMenu-2.0>=31 LibNotification
 ## OptionalDependsOn: LibAnnyoingUpdateNotificationInGame
 
 Lang/en.lua
